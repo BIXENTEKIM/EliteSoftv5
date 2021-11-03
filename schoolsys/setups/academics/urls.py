@@ -8,5 +8,6 @@ urlpatterns = [
 	path(r'subjects/', include('setups.academics.subjects.urls')),
 	path(r'campuses/', include('setups.academics.campuses.urls')),
 	path(r'gradesgrid/', include('setups.academics.gradesgrid.urls')),
-	path(r'mastersetups/', include('setups.academics.mastersetups.urls'))
+	path(r'mastersetups/', include('setups.academics.mastersetups.urls')),
+	path(r'hmcomments/', include('setups.academics.hmcomments.urls'))
 ]

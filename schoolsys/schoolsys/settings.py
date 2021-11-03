@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'setups.academics.gradesgrid.apps.GradesGridConfig',
     'setups.academics.termdates.apps.TermdatesConfig',
     'setups.academics.mastersetups.apps.MasterSetupsConfig',
+    'setups.academics.hmcomments.apps.HmcommentsConfig',
 
     'studentmanager.apps.StudentmanagerConfig',
     'studentmanager.parents.apps.ParentsConfig',

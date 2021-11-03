@@ -1,13 +1,13 @@
 from django.db import models
 
-from setups.academics.departments.models import SchoolDepartments
 
 
-class GradesGrid(models.Model):
-    grades_code = models.AutoField(primary_key=True)
-    grades_val1 = models.IntegerField(default=0)
-    grades_val2 = models.IntegerField(default=0)
-    grades_grade = models.CharField(max_length=20 )
-    grades_remarks = models.CharField(max_length=50 )
-    grades_department = models.ForeignKey(SchoolDepartments, on_delete=models.CASCADE, null=False, blank=False,default=0)
-    grades_option = models.CharField(max_length=50,null=True,blank=True,default="ALL" )
+class HMComments(models.Model):
+    hm_code = models.AutoField(primary_key=True)
+    hm_val1 = models.IntegerField(default=0)
+    hm_val2 = models.IntegerField(default=0)
+    hm_grade = models.CharField(max_length=20 )
+    hm_remarks = models.CharField(max_length=50 )
+
+    class Meta:
+        db_table = 'Setups_HMComments'

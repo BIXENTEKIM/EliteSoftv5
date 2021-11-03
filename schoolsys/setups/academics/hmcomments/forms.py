@@ -1,9 +1,9 @@
 from django.forms import ModelForm
 
-from setups.academics.gradesgrid.models import GradesGrid
+from setups.academics.hmcomments.models import HMComments
 
 
-class GradesGridForm(ModelForm):
+class HMCommentsForm(ModelForm):
     class Meta:
-        model = GradesGrid
+        model = HMComments
         fields = '__all__'

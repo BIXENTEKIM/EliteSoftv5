@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div class="container">
+          <h4 class="text-muted mb-3">Academic Setups</h4>
+
+  <div class="row">
+    <div class="col-10 col-md-6 mx-auto">
+      <ul class="list-group card">
+          <li class="list-group-item"><a href="/setups/academics/campuses/"><i class="fa fa-university text-info mx-2"></i>Campuses</a></li>
+          <li class="list-group-item"><a href="/setups/academics/classes/"><i class="fa fa-book text-info mx-2"></i>Classes</a></li>
+        <li class="list-group-item"><i class="fa fa-map text-info mx-2"></i> Class Subjects</li>
+        <li class="list-group-item"><a href="/setups/academics/subjects/"><i class="fa fa-bar-chart text-info mx-2"></i>Subjects</a></li>
+        <li class="list-group-item"><i class="fa fa-sitemap text-info mx-2"></i>Subject Grouping</li>
+        <li class="list-group-item"><a href="/setups/academics/departments/"><i class="fa fa-building-o text-info mx-2"></i>Department/Courses</a></li>
+        <li class="list-group-item"><a href="/setups/academics/termdates/"><i class="fa fa-calendar text-info mx-2"></i>Term Dates</a></li>
+        <li class="list-group-item"><a href="/setups/academics/gradesgrid/"><i class="fa fa-calendar text-info mx-2"></i>Grades Grid</a></li>
+        <li class="list-group-item"><a href="/setups/academics/dorms/"><i class="fa fa-bed text-info mx-2"></i>Dorms</a></li>
+
+
+      </ul>
+    </div>
+          <div class="col-10 col-md-6 mx-auto card">
+{#                    <h5 class="text-muted mb-3">&nbsp;</h5>#}
+
+      <ul class="list-group card">
+        <li class="list-group-item"><i class="fa fa-pie-chart text-info mx-2"></i> Grading System</li>
+        <li class="list-group-item"><i class="fa fa-users text-info mx-2"></i> Staff Responsibilities</li>
+        <li class="list-group-item"><i class="fa fa-check-circle-o text-info mx-2"></i> Student Clearance</li>
+        <li class="list-group-item"><a href="/setups/academics/mastersetups/"><i class="fa fa-road text-info mx-2"></i>Master Setups</a></li>
+        <li class="list-group-item"><i class="fa fa-calendar-check-o text-info mx-2"></i> Report Register</li>
+       <li class="list-group-item"><i class="fa fa-tags text-info mx-2"></i> Parents Web Accounts</li>
+        <li class="list-group-item"><i class="fa fa-comment-o text-info mx-2"></i> HT Comments</li>
+
+
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script src=" {% static 'custom/setups/academics/academics.js' %}"></script>
+
+{% endblock %}

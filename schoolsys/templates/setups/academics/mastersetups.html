@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="row">
+            <div class="col-md-11 col-sm-11 mx-3">
+
+              <h4 class="text-muted mb-3">Master Setups</h4>
+            </div>
+
+        <div class="col-md-11 col-sm-11 mx-3">
+<button type="button" class="btn btn-outline-primary float-right" id="open-modal">
+    New
+</button>
+
+
+        </div>
+
+        <div class="col-md-11 col-sm-11 mt-2 mx-3">
+
+            <div class="table-responsive">
+        <table class="table table-striped display responsive nowrap" id="mastersetupsTable">
+  <thead>
+    <tr>
+      <th scope="col">Setups Description</th>
+      <th scope="col">Setup Type</th>
+        <th></th>
+        <th></th>
+
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+    </div>
+
+        </div>
+
+<div class="modal fade" id="mastersetupsModal" role="dialog" aria-labelledby="classModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title mb-1" id="classModalTitle">Add/Edit Setups</h5>
+        <button type="button" class="close mr-1 mb-2 btn btn-outline-light" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+         <form id="mastersetups-form">
+                {% csrf_token %}
+                <input type="hidden" name="ms_code" class="form-control" id="ms_code" placeholder="">
+                <div class="form-group row mb-3">
+                          <label for="unit-id" class="col-md-2 ml-3 col-sm-11 control-label">Setup Description</label>
+
+                        <div class="col-md-8 col-sm-11 ml-0">
+                         <input type="text" name="ms_desc" class="form-control" id="ms_desc" placeholder="">
+
+                        </div>
+                </div>
+                  <div class="form-group row mb-3">
+                          <label for="unit-id" class="col-md-2 ml-3 col-sm-11 control-label">Setup Type</label>
+
+                        <div class="col-md-8 col-sm-11">
+                         <select id="ms_type" name="ms_type" class="form-control" >
+                                <option>Student Sources</option>
+                                <option>Staff Responsibilities</option>
+                                <option>Employees Responsibilities</option>
+                            </select>
+
+                        </div>
+                </div>
+
+
+
+
+
+
+            </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="saveMasterSetups" class="btn btn-outline-primary">Save</button>
+
+        <button type="button" class="btn btn-outline-default-" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+    </div>
+
+      <script src=" {% static 'custom/setups/academics/mastersetups.js' %}"></script>
+
+{% endblock %}

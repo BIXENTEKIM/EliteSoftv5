@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="row">
+            <div class="col-md-11 col-sm-11 mx-3">
+
+              <h4 class="text-muted mb-3">Subjects Setups</h4>
+            </div>
+
+        <div class="col-md-11 col-sm-11 mx-3">
+<button type="button" class="btn btn-outline-primary float-right" id="open-modal">
+    New
+</button>
+
+
+        </div>
+
+        <div class="col-md-11 col-sm-11 mt-2 mx-3">
+
+            <div class="table-responsive">
+        <table class="table table-striped display responsive nowrap" id="subjectTable">
+  <thead>
+    <tr>
+      <th scope="col">Subject Code</th>
+      <th scope="col">Subject Name</th>
+      <th scope="col">Department</th>
+      <th scope="col">Subject Order</th>
+      <th scope="col">Subject Multiply By</th>
+      <th scope="col">Include for positioning</th>
+        <th></th>
+        <th></th>
+
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+    </div>
+
+        </div>
+
+<div class="modal fade" id="subjectModal" role="dialog" aria-labelledby="subjectModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title mb-1" id="subjectModalTitle">Add/Edit Subjects</h5>
+        <button type="button" class="close mr-1 mb-2 btn btn-outline-light" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+         <form id="subject-form">
+                {% csrf_token %}
+                <input type="hidden" name="subject_code" id="subjectCode">
+                <div class="form-group row mb-3">
+                          <label for="unit-id" class="col-md-2 ml-3 col-sm-11 control-label">Subject Code</label>
+
+                        <div class="col-md-8 col-sm-11 ml-0">
+                         <input type="text" name="subject_sht_code" class="form-control" id="subjectShtCode" placeholder="">
+
+                        </div>
+                </div>
+                 <div class="form-group row mb-3">
+                          <label for="unit-id" class="col-md-2 ml-3 col-sm-11 control-label">Name</label>
+
+                        <div class="col-md-8 col-sm-11">
+                             <input type="text" name="subject_name" class="form-control" id="subjectName" placeholder="">
+
+                        </div>
+                </div>
+
+              <div class="form-group row mb-3">
+                         <input type="hidden" id="department-code" name="subject_department"/>
+                          <input type="hidden" id="department-name">
+                          <label for="unit-id" class="col-md-2 ml-3 col-sm-11 control-label">Department</label>
+
+                        <div class="col-md-8 col-sm-11">
+
+                            <select id="department-frm" class="form-control"
+                     >
+
+
+                     </select>
+                        </div>
+                </div>
+
+                    <div class="form-group row mb-3">
+                          <label for="unit-id" class="col-md-2 ml-3 col-sm-11 control-label">Subject Order</label>
+
+                        <div class="col-md-8 col-sm-11">
+                         <input type="text" name="subject_order" class="form-control" id="subjectOrder" placeholder="">
+
+                        </div>
+                </div>
+
+             <div class="form-group row mb-3">
+                          <label for="unit-id" class="col-md-2 ml-3 col-sm-11 control-label">Multiply By</label>
+
+                        <div class="col-md-8 col-sm-11">
+                         <input type="text" name="subject_multiply_by" class="form-control" id="subjectMultiplyBy" placeholder="">
+
+                        </div>
+                </div>
+
+                <div class="form-group row mb-3">
+                         <label for="unit-id" class="col-md-2 ml-3 col-sm-11 control-label">Include for positioning</label>
+
+                        <div class="col-md-8 col-sm-11">
+                          <input type="checkbox" name="subject_include_for_pos"  id="subjectIncludeForPos">
+
+                        </div>
+                </div>
+
+
+
+            </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="saveSubject" class="btn btn-outline-primary">Save</button>
+
+        <button type="button" class="btn btn-outline-default-" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+    </div>
+
+      <script src=" {% static 'custom/setups/academics/subjects.js' %}"></script>
+
+{% endblock %}

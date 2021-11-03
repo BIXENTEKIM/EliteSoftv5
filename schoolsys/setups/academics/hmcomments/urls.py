@@ -1,15 +1,14 @@
 from django.urls import path
 
-from setups.academics.gradesgrid import views
+from setups.academics.hmcomments import views
 
 urlpatterns = [
-	path(r'', views.gradesgrid,name="gradesgrid"),
-    path(r'createGradesgrid', views.createGradesgrid, name="createGradesgrid"),
-    path(r'getGradesgrids', views.getGradesgrids, name="getGradesgrids"),
-    path('editGradesgrid/<int:id>', views.editGradesgrid, name='editGradesgrid'),
-    path('updateGradesgrid/<int:id>', views.updateGradesgrid, name='updateGradesgrid'),
-    path('deleteGradesgrid/<int:id>', views.deleteGradesgrid, name='deleteGradesgrid'),
-    path('searchDepartment', views.searchDepartment, name='searchDepartment'),
+	path(r'', views.hmcomments,name="hmcomments"),
+    path(r'createHMComments', views.createHMComments, name="createHMComments"),
+    path(r'getHMComments', views.getHMComments, name="getHMComments"),
+    path('editHMComments/<int:id>', views.editHMComments, name='editHMComments'),
+    path('updateHMComments/<int:id>', views.updateHMComments, name='updateHMComments'),
+    path('deleteHMComments/<int:id>', views.deleteHMComments, name='deleteHMComments'),
     # path('searchclasses', views.searchclasses, name='searchclasses')
 
 ]

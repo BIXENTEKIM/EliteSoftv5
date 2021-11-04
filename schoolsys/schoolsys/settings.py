@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'setups.academics.termdates.apps.TermdatesConfig',
     'setups.academics.mastersetups.apps.MasterSetupsConfig',
     'setups.academics.hmcomments.apps.HmcommentsConfig',
+    'setups.academics.subjectgroups.apps.SubjectGroupsConfig',
 
     'studentmanager.apps.StudentmanagerConfig',
     'studentmanager.parents.apps.ParentsConfig',

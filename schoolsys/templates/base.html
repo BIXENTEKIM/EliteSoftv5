@@ -3,19 +3,19 @@
 <!doctype html>
 <html lang="en">
   <head>
-  	<title>School</title>
+  	<title>EliteSoft 5.0</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 		<link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
 		<link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
-                  	<link rel="stylesheet" href="{% static 'datatables/css/datatablesbootstrap.css' %}">
+        <link rel="stylesheet" href="{% static 'datatables/css/datatablesbootstrap.css' %}">
 
-{#                  	<link rel="stylesheet" href="{% static 'datatables/css/datatables.css' %}">#}
-{#                  	<link rel="stylesheet" href="{% static 'datatables/css/datatablebuttons.css' %}">#}
-                  	<link rel="stylesheet" href="{% static 'datatables/css/datatablesresponsive.css' %}">
-                  	<link rel="stylesheet" href="{% static 'datatables/css/datatablescroller.css' %}">
-                    <link rel="stylesheet" href="{% static 'filecontrol/css/fileinput.css' %}">
+{#       <link rel="stylesheet" href="{% static 'datatables/css/datatables.css' %}">#}
+{#       <link rel="stylesheet" href="{% static 'datatables/css/datatablebuttons.css' %}">#}
+         <link rel="stylesheet" href="{% static 'datatables/css/datatablesresponsive.css' %}">
+         <link rel="stylesheet" href="{% static 'datatables/css/datatablescroller.css' %}">
+         <link rel="stylesheet" href="{% static 'filecontrol/css/fileinput.css' %}">
 
 
         <link rel="stylesheet" href="{% static 'select2/css/select2.css' %}">
@@ -41,7 +41,10 @@
             <nav id="sidebar">
                <div class="sidebar-header">
                    <h1>EliteSoft5</h1>
-                   <img src="D:\NON\School System\schoolsys\assets\images\eliteSoft.jpeg" alt="EliteSoft" width="500" height="600">
+<!--                   <img src="assets/images/eliteSoft.jpeg" alt="EliteSoft">-->
+                   {% load static %} <img src="{% static 'images/eliteSoft.jpeg' %}" alt="EliteSoft"  width="150" height="100"/>
+
+
 
                </div>
 
@@ -53,7 +56,7 @@
                     <a href="/setups/systemsetups">System Setups</a>
                                 </li>
                 <li>
-                    <a href="#">Admin Setups</a>
+                    <a href="{% url 'usersadmin' %}">Admin Setups</a>
                 </li>
                 <li>
                     <a href="#">Account Setups</a>
@@ -163,6 +166,7 @@
                   <button type="button" id="sidebarCollapse" class="btn btn-muted">
                       <i class="fa fa-bars" style="font-size:27px"></i>
                   </button>
+                   <a class="pull-right mr-3" href="{% url 'logout' %}"><i class="fa fa-sign-out"></i>Logout</a>
               </div>
             </nav>
           <br>

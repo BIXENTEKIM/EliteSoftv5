@@ -39,8 +39,6 @@ INSTALLED_APPS = [
     'setups.academics.apps.AcademicsConfig',
     'staff.apps.StaffConfig',
     'staff.teachers.apps.TeachersConfig',
-    'useradmin.apps.UseradminConfig',
-    'useradmin.users.apps.UsersConfig',
     'setups.academics.classes.apps.ClassesConfig',
     'setups.academics.dorms.apps.DormsConfig',
     'setups.academics.departments.apps.DepartmentsConfig',
@@ -52,10 +50,16 @@ INSTALLED_APPS = [
     'setups.academics.hmcomments.apps.HmcommentsConfig',
     'setups.academics.subjectgroups.apps.SubjectGroupsConfig',
 
+    'setups.system.parameters.apps.ParametersConfig',
+    'setups.system.templates.apps.TemplatesConfig',
+
     'studentmanager.apps.StudentmanagerConfig',
     'studentmanager.parents.apps.ParentsConfig',
     'studentmanager.parents.proffessions.apps.ProffessionsConfig',
 
+    'useradmin.apps.UseradminConfig',
+    'useradmin.users.apps.UsersConfig',
+    'login.apps.LoginConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -75,7 +79,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'schoolsys.urls'
-
+LOGIN_URL= '/login/loginpage'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -116,7 +120,7 @@ DATABASES = {
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
-
+AUTH_USER_MODEL = 'users.User'
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',

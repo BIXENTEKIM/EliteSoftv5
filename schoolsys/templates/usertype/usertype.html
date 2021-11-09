@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="row">
+            <div class="col-md-11 col-sm-11 mx-3">
+
+              <h4 class="text-muted mb-3">User Types Setups</h4>
+            </div>
+
+        <div class="col-md-11 col-sm-11 mx-3">
+<!--<button type="button" class="btn btn-outline-primary float-right" id="open-modal">-->
+<!--    New-->
+<!--</button>-->
+
+
+        </div>
+
+        <div class="col-md-11 col-sm-11 mt-2 mx-3">
+
+            <div class="table-responsive">
+        <table class="table table-striped display responsive nowrap" id="usertypeTable">
+  <thead>
+    <tr>
+      <th scope="col">User Type</th>
+      <th scope="col">User Type Desc</th>
+        <th></th>
+        <th></th>
+
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+    </div>
+
+        </div>
+
+<div class="modal fade" id="usertypeModal" role="dialog" aria-labelledby="classModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title mb-1" id="classModalTitle">Add/Edit User Type</h5>
+        <button type="button" class="close mr-1 mb-2 btn btn-outline-light" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+         <form id="usertype-form">
+                {% csrf_token %}
+                <input type="hidden" name="type_code" class="form-control" id="type_code" placeholder="">
+                <div class="form-group row mb-3">
+                          <label for="unit-id" class="col-md-2 ml-3 col-sm-11 control-label">User Type</label>
+
+                        <div class="col-md-8 col-sm-11 ml-0">
+                         <input type="text" name="type_name" class="form-control" id="type_name" placeholder="">
+
+                        </div>
+                </div>
+                  <div class="form-group row mb-3">
+                          <label for="unit-id" class="col-md-2 ml-3 col-sm-11 control-label">Type Desc</label>
+
+                        <div class="col-md-8 col-sm-11">
+                         <input type="text" name="type_desc" class="form-control" id="type_desc" placeholder="">
+
+                        </div>
+                </div>
+
+
+
+
+            </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="saveUsertype" class="btn btn-outline-primary">Save</button>
+
+        <button type="button" class="btn btn-outline-default-" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+    </div>
+
+      <script src=" {% static 'custom/usertype/usertype.js' %}"></script>
+
+{% endblock %}

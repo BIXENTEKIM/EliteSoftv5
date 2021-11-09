@@ -5,4 +5,5 @@ from useradmin import views
 urlpatterns = [
 	path(r'',views.usersadmin,name='usersadmin'),
 	path(r'users/', include('useradmin.users.urls')),
+	path(r'usertype/', include('usertype.usertype.urls'))
 	]

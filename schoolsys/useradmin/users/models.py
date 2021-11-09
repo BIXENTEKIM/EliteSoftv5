@@ -47,7 +47,7 @@ class User(AbstractBaseUser,models.Model):
     last_login = models.DateField(verbose_name="last_login",auto_now=True)
     is_active = models.BooleanField(default=True)
     user_teacher_ref = models.IntegerField(default=0,blank=True,null=True)
-    user_type= models.ForeignKey(UserType, on_delete=models.CASCADE,null=True)
+    user_type= models.ForeignKey(UserType, on_delete=models.CASCADE,null=False,default=None)
     user_supervisor= models.ForeignKey("self", on_delete=models.CASCADE,null=True)
     password = models.CharField(max_length=200,null=True,blank=True,default=None)
     objects = CustomUserManager()

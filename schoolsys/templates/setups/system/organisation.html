@@ -1,0 +1,169 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-11 col-sm-11 mx-3 mb-4">
+
+        <h4 class="text-muted">Org Setups</h4>
+
+        <button type="button" id="saveOrg" class="btn btn-outline-primary mr-3 ml-2 pull-right">Save</button>
+
+        <button type="button" id="newOrg" class="btn btn-outline-secondary mr-1 ml-2 pull-right">New</button>
+
+    </div>
+    <div class="col-md-10 col-sm-11 mx-5">
+
+        <form id="org-form">
+            {% csrf_token %}
+            <input type="hidden" name="org_code" id="org_code">
+            <div class="form-row">
+
+                <div class="col-md-6 col-sm-12">
+                    <div class="form-row mb-1 ml-1 mr-1">
+                        <h6 class="text-muted">Basic Details</h6>
+                    </div>
+                    <div class="form-row mb-2 ml-1 mr-1">
+                        &nbsp;
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <div class="form-row mb-1 ml-1 mr-1">
+                        <h6 class="text-muted">Additional Details</h6>
+                    </div>
+                    <div class="form-row mb-1 ml-1 mr-1">
+                        &nbsp;
+                    </div>
+                </div>
+
+
+                <div class="form-row">
+                    <div class="col-md-6 col-sm-12">
+                        <div class="form-row mb-4 ml-1 mr-1">
+                            <label class="col-md-3 control-label" for="select">Organisation Name</label>
+                            <input type="text" name="Org_Name" id="Org_Name" class="form-control col-md-8">
+                        </div>
+                        <div class="form-row mb-4 ml-1 mr-1">
+                            <label class="col-md-3 control-label" for="select">Physical Address</label>
+                            <input name="Org_Physical_Address" id="Org_Physical_Address" type="text"
+                                   class="form-control col-md-8">
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <div class="form-row mb-4 ml-1 mr-1">
+                            <label class="col-md-3 control-label" for="select">Tag Line</label>
+                            <input name="Org_Tag_Line" id="Org_Tag_Line" type="text" class="form-control col-md-8">
+                        </div>
+                        <div class="form-row mb-4 ml-1 mr-1">
+                            <label class="col-md-3 control-label" for="select">Mission</label>
+                            <input name="Org_Mission" id="Org_Mission" type="text" class="form-control col-md-8">
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <div class="form-row mb-4 ml-1 mr-1">
+                            <label class="col-md-3 control-label" for="select">Tel No's.</label>
+                            <input name="Org_Tel_No" id="Org_Tel_No" type="text" class="form-control col-md-8">
+                        </div>
+                        <div class="form-row mb-4 ml-1 mr-1">
+                            <label class="col-md-3 control-label" for="select">Email Address.</label>
+                            <input name="Org_Email" id="Org_Email" type="text" class="form-control col-md-8">
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-12">
+                        <div class="form-row mb-4 ml-1 mr-1">
+                            <label class="col-md-3 control-label" for="select">&nbsp;Vision</label>
+                            <input name="Org_Vision" id="Org_Vision" type="text" class="form-control col-md-8">
+                        </div>
+                        <div class="form-row mb-4 ml-1 mr-1">
+                            <label class="col-md-3 control-label" for="select">NHIF No.</label>
+                            <input name="Org_NHIF_Code" id="Org_NHIF_Code" type="text" class="form-control col-md-8">
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <div class="form-row mb-4 ml-1 mr-1">
+                            <label class="col-md-3 control-label" for="select">Poastal Address</label>
+                            <input name="Org_Poastal_Address" id="Org_Poastal_Address" type="text"
+                                   class="form-control col-md-8">
+                        </div>
+                        <div class="form-row mb-4 ml-1 mr-1">
+                            <label class="col-md-3 control-label" for="select">Key Contact Cell No</label>
+                            <input name="Org_Cell_No" id="Org_Cell_No" type="text"
+                                   class="form-control col-md-8">
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-12">
+                        <div class="form-row mb-4 ml-1 mr-1">
+                            <label class="col-md-3 control-label" for="select">NSSF No</label>
+                            <input name="Org_NSSF_Code" id="Org_NSSF_Code" type="text" class="form-control col-md-8">
+                        </div>
+                        <div class="form-row mb-4 ml-1 mr-1">
+                            <label class="col-md-3 control-label" for="select">PIN No</label>
+                            <input name="Org_Pin_No" id="Org_Pin_No" type="text" class="form-control col-md-8">
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-6 col-sm-12">
+                        <div class="form-row mb-4 ml-1 mr-1">
+                            <label class="col-md-3 control-label" for="select">Website</label>
+                            <input name="Org_Website" id="Org_Website" type="text" class="form-control col-md-8">
+                        </div>
+                        <div class="form-row mb-4 ml-1 mr-1">
+                             <label class="col-md-3 control-label" for="select">Logo 1</label>
+                            <input type="file" name="file" id="logo1-avatar" class="form-control col-md-8">
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-md-6 col-sm-12">
+                        <div class="form-row mb-4 ml-1 mr-1">
+
+                        </div>
+                        <div class="form-row mb-4 ml-1 mr-1">
+                            <label class="col-md-3 control-label" for="select">Logo 2</label>
+                            <input type="file" name="file2" id="logo2-avatar" class="form-control col-md-8">
+                        </div>
+                    </div>
+
+
+
+                </div>
+        </form>
+    </div>
+
+</div>
+<div class="col-md-11 col-sm-11 mx-5 mt-4">
+
+    <div class="table-responsive">
+        <table class="table table-striped display responsive nowrap" id="orgTable">
+            <thead>
+            <tr>
+                <th scope="col">Org Name</th>
+                <th scope="col">Address</th>
+                <th scope="col">TelNo</th>
+                <th scope="col">Email</th>
+                <th scope="col">Website</th>
+                <th scope="col">Mission</th>
+                <th scope="col">Vision</th>
+
+                <th></th>
+                <th></th>
+
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+
+</div>
+
+<script src=" {% static 'custom/setups/system/organisation.js' %}"></script>
+
+{% endblock %}

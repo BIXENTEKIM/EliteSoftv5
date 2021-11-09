@@ -261,9 +261,9 @@ function getUsers() {
                     + "<td>" + item.userLname + "</td>"
                     + "<td>" + item.userGender + "</td>"
                     + "<td>" + item.email + "</td>"
-                    + "<td>" + item.userAddress + "</td>"
+//                    + "<td>" + item.userAddress + "</td>"
                     + "<td>" + item.userPhone + "</td>"
-                    + "<td>" + item.supervisorName + "</td>"
+//                    + "<td>" + item.supervisorName + "</td>"
                     + "<td>" + item.status + "</td>"
                     + "<td>" + '<form id="editForm" method="post" enctype="multipart/form-data"><input type="hidden" id="edit-user" name="id" value=' + item.userId + '></form><button class="btn btn-outline-primary btn-sm btn-editUser" ><i class="fa fa-edit"></button>'
                     + "</td>"

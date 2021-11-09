@@ -52,6 +52,7 @@ INSTALLED_APPS = [
 
     'setups.system.parameters.apps.ParametersConfig',
     'setups.system.templates.apps.TemplatesConfig',
+    'setups.system.organisation.apps.OrganisationConfig',
 
     'studentmanager.apps.StudentmanagerConfig',
     'studentmanager.parents.apps.ParentsConfig',
@@ -59,6 +60,7 @@ INSTALLED_APPS = [
 
     'useradmin.apps.UseradminConfig',
     'useradmin.users.apps.UsersConfig',
+    'usertype.usertype.apps.UsertypeConfig',
     'login.apps.LoginConfig',
     'django.contrib.admin',
     'django.contrib.auth',

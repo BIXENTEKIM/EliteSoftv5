@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.db import IntegrityError
 from django.http import JsonResponse
 from django.shortcuts import render
 
@@ -168,9 +169,14 @@ def updateuser(request,id):
     else:
         users.user_sup = None
 
-
+    # /try:
     users.save()
     return JsonResponse({'success': 'User Updated Successfully'})
+    # except IntegrityError:
+    #     return JsonResponse({'Error': 'Error occurred, User not saved'})
+    # else:
+    #     return JsonResponse({'Failed': 'Error occurred, User not saved'})
+
 
 
 def getusers(request):

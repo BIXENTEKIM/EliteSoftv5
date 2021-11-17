@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block content %}
-    <div class="row">
+    <div class="row container-fluid">
      <div class="col-md-11 col-sm-11 mx-3 mb-4">
 
               <h4 class="text-muted">Parents Setups</h4>
@@ -95,7 +95,7 @@
                             <input name="father_email" id="fatherEmail" type="text" class="form-control col-md-8">
                           </div>
                               <div class="form-row mb-4 ml-1 mr-1">
-                            <label class="col-md-3 control-label" for="select">Profession</label>
+                            <label class="col-md-3 control-label" for="select">Proffession</label>
                                   <input type="hidden" name="father_proffession" id="fatherProffession">
                                   <select id="prf-frm" type="text" class="form-control col-md-8"></select>
                           </div>
@@ -107,7 +107,7 @@
                             <input name="mother_email" id="motherEmail" type="text" class="form-control col-md-8">
                           </div>
                               <div class="form-row mb-4 ml-1 mr-1">
-                            <label class="col-md-3 control-label" for="select">Profession</label>
+                            <label class="col-md-3 control-label" for="select">Proffession</label>
                                   <input type="hidden" name="mother_proffession" id="motherProffession">
                                   <select id="prm-frm" type="text" class="form-control col-md-8"></select>
                           </div>
@@ -122,7 +122,7 @@
                      <option value="G">Guardian</option>
 
                     </select>
-                              <label for="unit-id" class="col-md-3 ml-3 col-sm-11 control-label">Email Required</label>
+                              <label for="unit-id" class="col-md-3 ml-3 col-sm-11 control-label">Email_Required</label>
 
                         <div class="col-md-1 col-sm-11">
                           <input type="checkbox" name="email_required"  id="emailRequired">
@@ -145,7 +145,7 @@
 {#                        </div>#}
                               <div class="col-md-6 col-sm-12">
                           <div class="form-row mb-4 ml-1 mr-1">
-                            <label class="col-md-3 control-label" for="select">Parent Photo</label>
+                            <label class="col-md-3 control-label" for="select">Parent_Photo</label>
                             <input type="file" name="file" id="parent-avatar" class="form-control col-md-8">
                           </div>
 
@@ -168,7 +168,13 @@
       <th scope="col">occupation</th>
       <th scope="col">Email</th>
       <th scope="col">Par/Gur</th>
-       <th scope="col">ID No</th>
+      <th scope="col">Mother Name</th>
+       <th scope="col">Address</th>
+      <th scope="col">TelNo</th>
+      <th scope="col">occupation</th>
+      <th scope="col">Email</th>
+      <th scope="col">Require Mail</th>
+              <th scope="col">ID No</th>
 
         <th></th>
         <th></th>

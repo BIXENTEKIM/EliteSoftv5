@@ -3,6 +3,7 @@ import pdb
 from django.http import JsonResponse
 from django.shortcuts import render
 import pyodbc as po
+from datetime import datetime
 # Create your views here.
 from setups.accounts.accountmaster.forms import AccountMasterForm
 from setups.accounts.accountmaster.models import AccountMaster
@@ -151,6 +152,7 @@ def createAccountmaster(request):
             inst=accountmaster.save()
             accmast = AccountMaster.objects.get(pk=inst.pk)
             accmast.am_created_by = 'KIM'
+            accmast.am_created_on = datetime.today()
             v_accno = generateAccountNo(amaccountgroups.ag_prefix)
             print('generated account no is '+ str(v_accno))
             accmast.am_account_no=v_accno

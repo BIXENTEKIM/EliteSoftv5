@@ -40,7 +40,7 @@ class AccountMaster(models.Model):
     am_pc = models.BooleanField(default=False, null=False, blank=False)
     am_order = models.IntegerField(default=0 ,null=True, blank=True)
     am_created_by = models.CharField(max_length=200,null=True,blank=True)
-    am_created_on = models.DateField(null=True,blank=True)
+    am_created_on = models.DateTimeField(null=True,blank=True)
 
     class Meta:
         db_table = 'account_master'

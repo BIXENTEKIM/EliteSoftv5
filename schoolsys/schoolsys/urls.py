@@ -22,6 +22,8 @@ from schoolsys import settings
 urlpatterns = [
     path('',include('students.urls')),
     path('students/', include('students.urls')),
+    path('', include('localities.urls')),
+    path('localities/', include('localities.urls')),
     path('setups/', include('setups.urls')),
     path('login/', include('login.urls')),
     path('admin/', admin.site.urls),

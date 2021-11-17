@@ -4,21 +4,24 @@ from io import BytesIO
 from math import nan
 from urllib.parse import urlsplit, urlparse
 
+from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render
 import pandas as pd
 
 # Create your views here.
+from django.views.decorators.cache import cache_control
 from rest_framework import status
 
 from studentmanager.parents.forms import ParentsForm
 from studentmanager.parents.models import Parents, ExcelFile
 from studentmanager.parents.proffessions.models import Proffessions
-from students.models import Select2Data
-from students.serializers import Select2Serializer
+from localities.models import Select2Data
+from localities.serializers import Select2Serializer
 from django.conf import Settings, settings
 
-
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+@login_required
 def getparent(request):
     return render(request,'students/parents.html')
 
@@ -107,7 +110,7 @@ def importexcel(request):
                    proffession = Proffessions.objects.get(proffesion_name=obj['MotherProffession'])
                    parent.mother_proffession = proffession
 
-               except  Proffessions.DoesNotExist:
+               except Proffessions.DoesNotExist:
                    return JsonResponse({'error': str(obj['MotherProffession'])+' is not defined'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
            parent.save()
@@ -138,7 +141,6 @@ def get_parentsData():
              response_data['MotherPhone'] = obj.mother_phone
              response_data['FatherEmail'] = obj.father_email
              response_data['MotherEmail'] = obj.mother_email
-             # response_data['parentType'] = obj.parent_type
              response_data['EmailRequired'] = obj.email_required
 
              if obj.parent_type == 'P':
@@ -173,6 +175,7 @@ def generateExcel(request):
             with pd.ExcelWriter(b) as writer:
                 data.to_excel(writer, sheet_name="Data", index=False)
 
+
             filename = f"parentsdata.xlsx"
             res = HttpResponse(
                 b.getvalue(),
@@ -182,7 +185,6 @@ def generateExcel(request):
             return res
 
 def addparents(request):
-
     email_req = ''
     if request.method == 'POST' and 'email_required' in request.POST:
         val = request.POST['email_required']
@@ -250,6 +252,7 @@ def editparents(request,id):
     #    print('File Present')
     # url = request.get_host() + parent.parent_photo.url
     # print(urlsplit(request.build_absolute_uri(None)).scheme)
+
     if parent.parent_photo:
         response_data['url'] = urlsplit(request.build_absolute_uri(None)).scheme + '://' + request.get_host() + parent.parent_photo.url
     return JsonResponse(response_data)
@@ -317,3 +320,4 @@ def getparents(request):
             listsel.append(response_data)
 
     return JsonResponse(listsel, safe=False)
+

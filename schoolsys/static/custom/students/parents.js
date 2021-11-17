@@ -271,7 +271,12 @@ function getParents() {
                     + "<td>" + item.fatherProfName + "</td>"
                     + "<td>" + item.fatherEmail + "</td>"
                     + "<td>" + item.parentType + "</td>"
-
+                    + "<td>" + item.motherName + "</td>"
+                    + "<td>" + item.motherAddress + "</td>"
+                    + "<td>" + item.motherPhone + "</td>"
+                    + "<td>" + item.motherProfName + "</td>"
+                    + "<td>" + item.motherEmail + "</td>"
+                    + "<td>" + item.emailRequired + "</td>"
                     + "<td>" + item.idNo + "</td>"
                     + "<td>" + '<form id="editForm" method="post" enctype="multipart/form-data"><input type="hidden" id="edit-parent" name="id" value=' + item.parentCode + '></form><button class="btn btn-outline-primary btn-sm btn-editParent" ><i class="fa fa-edit"></button>'
                     + "</td>"

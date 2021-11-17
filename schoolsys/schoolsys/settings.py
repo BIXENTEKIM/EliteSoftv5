@@ -54,6 +54,8 @@ INSTALLED_APPS = [
     'setups.system.templates.apps.TemplatesConfig',
     'setups.system.organisation.apps.OrganisationConfig',
 
+    'setups.accounts.accountmaster.apps.AccountMasterConfig',
+
     'studentmanager.apps.StudentmanagerConfig',
     'studentmanager.parents.apps.ParentsConfig',
     'studentmanager.parents.proffessions.apps.ProffessionsConfig',

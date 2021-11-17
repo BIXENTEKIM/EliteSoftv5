@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div class="container">
+          <h4 class="text-muted mb-3">Accounts Setups</h4>
+
+  <div class="row">
+    <div class="col-10 col-md-6 mx-auto">
+      <ul class="list-group card">
+        <li class="list-group-item"><a href="/setups/accounts/accountmaster/"><i class="fa fa-university text-info mx-2"></i>System Accounts</a></li>
+        <li class="list-group-item"><a href="/setups/system/parameters/"><i class="fa fa-bar-chart text-info mx-2"></i>Accounts Mapping</a></li>
+        <li class="list-group-item"><a href="/setups/system/organisation/"><i class="fa fa-building-o text-info mx-2"></i>Payment Modes</a></li>
+        <li class="list-group-item"><a href="/setups/system/parameters/"><i class="fa fa-area-chart text-info mx-2"></i>Standard Charges</a></li>
+
+
+      </ul>
+    </div>
+          <div class="col-10 col-md-6 mx-auto card">
+{#                    <h5 class="text-muted mb-3">&nbsp;</h5>#}
+
+      <ul class="list-group card">
+                 <li class="list-group-item"><a href="/setups/system/templates/"><i class="fa fa-desktop text-info mx-2"></i>Banks</a></li>
+                 <li class="list-group-item"><a href="/setups/system/templates/"><i class="fa fa-book text-info mx-2"></i>Bank Branches</a></li>
+
+
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script src=" {% static 'custom/setups/system/system.js' %}"></script>
+
+{% endblock %}

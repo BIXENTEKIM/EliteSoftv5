@@ -6,3 +6,7 @@ def academics(request):
 
 def system(request):
     return render(request, 'setups/system/system_setup.html')
+
+
+def accounts(request):
+    return render(request, 'setups/accounts/accounts_setup.html')

@@ -3,12 +3,14 @@ import os
 from io import BytesIO
 from math import nan
 from urllib.parse import urlsplit, urlparse
-
+import pyodbc as po
+from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render
 import pandas as pd
 
 # Create your views here.
+from django.views.decorators.cache import cache_control
 from rest_framework import status
 
 from setups.system.organisation.forms import OrganisationForm
@@ -18,6 +20,8 @@ from students.serializers import Select2Serializer
 from django.conf import Settings, settings
 
 
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+@login_required
 def organisation(request):
     return render(request,'setups/system/organisation.html')
 
@@ -66,7 +70,41 @@ def editOrganisation(request,id):
         response_data['url2'] = urlsplit(request.build_absolute_uri(None)).scheme + '://' + request.get_host() + organisation.Org_Logo2.url
     return JsonResponse(response_data)
 
+def testProc(request):
+    server = r'DESKTOP-1FPK0DH\\MSSQLSERVER01,1433'
+    database = 'TestSchool'
+    username = 'admin'
+    password = 'P4$$W0RD'
+    try:
+        # Connection string
+        cnxn = po.connect('DRIVER={ODBC Driver 17 for SQL Server};SERVER=' +
+                          server + ';DATABASE=' + database + ';UID=' + username + ';PWD=' + password)
+        cursor = cnxn.cursor()
 
+        # Prepare the stored procedure execution script and parameter values
+        storedProc = "Exec  [Mtb_GetCustomers] @SearchText = ?, @MaximumRowsToReturn = ?"
+        params = ("kim", 10)
+
+        # Execute Stored Procedure With Parameters
+        cursor.execute(storedProc, params)
+
+        # Iterate the cursor
+        row = cursor.fetchone()
+        while row:
+            # Print the row
+            print(str(row[0]) + " : " + str(row[1] or ''))
+            row = cursor.fetchone()
+
+        # Close the cursor and delete it
+        cursor.close()
+        del cursor
+
+        # Close the database connection
+        cnxn.close()
+        return JsonResponse({'success': 'Organisation Saved Successfully'})
+    except Exception as e:
+        print("Error: %s" % e)
+        return JsonResponse({'success': "Error: %s" % e})
 def updateOrganisation(request,id):
     organisation = Organisation.objects.get(pk=id)
 
@@ -95,6 +133,7 @@ def getOrganisations(request):
 
             response_data['org_code'] = obj.org_code
             response_data['Org_Name'] = obj.Org_Name
+            response_data['Org_Website'] = obj.Org_Website
             response_data['Org_Physical_Address'] = obj.Org_Physical_Address
             response_data['Org_Tel_No'] = obj.Org_Tel_No
             response_data['Org_Email'] = obj.Org_Email
@@ -104,7 +143,6 @@ def getOrganisations(request):
             response_data['Org_Mission'] = obj.Org_Mission
             response_data['Org_Vision'] = obj.Org_Vision
             response_data['Org_Pin_No'] = obj.Org_Pin_No
-
             response_data['Org_NHIF_Code'] = obj.Org_NHIF_Code
             response_data['Org_NSSF_Code'] = obj.Org_NSSF_Code
             listsel.append(response_data)

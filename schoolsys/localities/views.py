@@ -56,7 +56,7 @@ def home(request):
 #     students = StudentDef.objects.raw(
 #         "SELECT stdCode,concat(firstName,' ',lastName)name,phone,website,age,town,country_name,county_name FROM students_studentdef" +
 #         " INNER JOIN students_countries on stud_country_id=country_id"+
-#         " INNER JOIN students_counties on stud_county_id=county_id")
+#         " INNER JOIN localities_counties on stud_county_id=county_id")
 #
 #     for obj in students:
 #         response_data = {}
@@ -215,7 +215,7 @@ def home(request):
 #
 #     listsel = []
 #     counties = Counties.objects.raw(
-#         "SELECT top 5 county_id,county_name FROM students_counties WHERE county_country_id = %s and" +
+#         "SELECT top 5 county_id,county_name FROM localities_counties WHERE county_country_id = %s and" +
 #         " (county_name like %s or county_code like %s)",
 #         [id, query,query])
 #

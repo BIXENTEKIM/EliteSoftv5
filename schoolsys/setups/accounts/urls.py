@@ -2,6 +2,7 @@ from django.urls import path, include
 
 urlpatterns = [
 	path(r'accountmaster/', include('setups.accounts.accountmaster.urls')),
+	path(r'accountmapping/', include('setups.accounts.accountmapping.urls')),
 	# path(r'dorms/', include('setups.academics.dorms.urls')),
 	# path(r'departments/', include('setups.academics.departments.urls')),
 	# path(r'subjects/', include('setups.academics.subjects.urls')),

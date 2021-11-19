@@ -55,8 +55,11 @@ INSTALLED_APPS = [
     'setups.system.organisation.apps.OrganisationConfig',
 
     'setups.accounts.accountmaster.apps.AccountMasterConfig',
+    'setups.accounts.accountmapping.apps.AccountMappingConfig',
 
     'studentmanager.apps.StudentmanagerConfig',
+    'studentmanager.studentsubjects.apps.StudentsubjectsConfig',
+
     'studentmanager.parents.apps.ParentsConfig',
     'studentmanager.parents.proffessions.apps.ProffessionsConfig',
     'studentmanager.student.apps.StudentConfig',
@@ -95,6 +98,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+SESSION_EXPIRE_SECONDS = 300
+SESSION_TIMEOUT_REDIRECT = '/login/loginpage'
 
 ROOT_URLCONF = 'schoolsys.urls'
 LOGIN_URL= '/login/loginpage'

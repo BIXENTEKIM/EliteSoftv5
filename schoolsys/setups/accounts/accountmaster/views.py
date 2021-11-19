@@ -1,4 +1,6 @@
 import pdb
+from django.contrib.auth.decorators import login_required
+from django.views.decorators.cache import cache_control
 
 from django.http import JsonResponse
 from django.shortcuts import render
@@ -14,7 +16,8 @@ from setups.accounts.accountmaster.forms import AccountMainForm
 from students.models import Select2Data
 from students.serializers import Select2Serializer
 
-
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+@login_required
 def accountmaster(request):
     return render(request, 'setups/accounts/accountmaster.html')
 

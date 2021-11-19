@@ -64,7 +64,6 @@ function getCampuses() {
             $.each(s, function (i, item) {
                 $("#campusTable tbody").append(
                     "<tr scope='col'>"
-                    + "<td>" + item.campus_code + "</td>"
                     + "<td>" + item.campus_name + "</td>"
                     + "<td>" + item.campusCounty + "</td>"
                     + "<td>" + item.campus_location + "</td>"
@@ -101,6 +100,12 @@ function saveCampus(){
             clearData()
             $('#campusModal').modal('hide')
 			bootbox.alert(s.success)
+//			  sweetAlert({
+//                 type: 'success',
+//                 title: 'Success',
+//                 text: s.success,
+//                 showConfirmButton: true,
+//             })
 
 		}).fail(function (xhr, error) {
 						bootbox.alert(xhr.responseText)

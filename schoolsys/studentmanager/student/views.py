@@ -528,18 +528,20 @@ def addstudent(request):
         student.student_status = stat
 
     print(student)
-
-    inst=student.save()
-    stud = Students.objects.get(pk=inst.pk)
-    year = datetime.today().year
-    year=str(year)
-    year=year.replace('2','',1)
-    year=year.replace('0','',2)
-    keyuniq='S00'+str(stud.pk)+'/'+year
-    stud.adm_no=keyuniq
-    stud.birth_cert_no = 'brdq001'
-    stud.save()
-    return JsonResponse({'success': 'Student Saved Successfully'})
+    if student.is_valid():
+        inst=student.save()
+        stud = Students.objects.get(pk=inst.pk)
+        year = datetime.today().year
+        year=str(year)
+        year=year.replace('2','',1)
+        year=year.replace('0','',2)
+        keyuniq='S00'+str(stud.pk)+'/'+year
+        stud.adm_no=keyuniq
+        stud.save()
+        return JsonResponse({'success': 'Student Saved Successfully'})
+    else:
+        print(student.errors)
+        return JsonResponse({'success': "Error saving account master"})
 
 
 def getstudents(request):
@@ -681,12 +683,19 @@ def editstudent(request,id):
 
 def updatestudent(request,id):
     student = Students.objects.get(pk=id)
+    if student.status is not None and student.status == '':
+        student.status="Active"
     form = StudForm(request.POST, request.FILES, instance=student)
     admnno = student.adm_no
     form.adm_no=admnno
-    print(form)
-    form.save()
-    return JsonResponse({'success': 'Student Updated Successfully'})
+    # print(form)
+    if form.is_valid():
+        form.save()
+        return JsonResponse({'success': 'Student Updated Successfully'})
+    else:
+        print(form.errors)
+        return JsonResponse({'success': "Error saving account master"})
+
 
 
 def deletestudent(request,id):

@@ -29,7 +29,7 @@ class Students(models.Model):
       completion_date = models.DateTimeField(null=True,blank=True)
       birth_cert_no = models.CharField(max_length=200,null=True,blank=True)
       index_no = models.CharField(max_length=200,null=True,blank=True)
-      status = models.CharField(max_length=200, null=False, blank=False,default="Active")
+      status = models.CharField(max_length=200, null=True, blank=True,default="Active")
       state = models.CharField(max_length=200, null=True, blank=True)
       marks = models.CharField(max_length=200,null=True,blank=True)
       grade = models.CharField(max_length=200,null=True,blank=True)
@@ -51,3 +51,5 @@ class Students(models.Model):
       health_status = models.ForeignKey(HealthStatus, on_delete=models.CASCADE, null=True,blank=True)
       student_status = models.ForeignKey(StudentStatus, on_delete=models.CASCADE, null=True,blank=True)
       student_exam_year = models.ForeignKey(Years, on_delete=models.CASCADE, null=True,blank=True)
+
+

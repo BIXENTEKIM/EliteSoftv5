@@ -14,6 +14,7 @@
 {#       <link rel="stylesheet" href="{% static 'datatables/css/datatables.css' %}">#}
 {#       <link rel="stylesheet" href="{% static 'datatables/css/datatablebuttons.css' %}">#}
          <link rel="stylesheet" href="{% static 'datatables/css/datatablesresponsive.css' %}">
+          <link rel="stylesheet" href="{% static 'sweetalert/sweetalert.css' %}">
          <link rel="stylesheet" href="{% static 'datatables/css/datatablescroller.css' %}">
          <link rel="stylesheet" href="{% static 'filecontrol/css/fileinput.css' %}">
 
@@ -34,6 +35,7 @@
         <script src=" {% static 'select2/js/select2.js' %}"></script>
         <script src="{% static 'js/bootbox.min.js' %}"></script>
         <script src=" {% static 'custom/base.js' %}"></script>
+      <script src="{% static 'sweetalert/sweetalert.js' %}"></script>
 
   </head>
   <body>
@@ -90,6 +92,9 @@
                 </li>
                   <li>
                 <a  href="{% url 'getparent' %}">Parents</a>
+                </li>
+                    <li>
+                    <a href="{% url 'getstudentsubject' %}">Student Subjects</a>
                 </li>
                 <li>
                     <a href="#">Academics</a>

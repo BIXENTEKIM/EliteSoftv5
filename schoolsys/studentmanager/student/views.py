@@ -449,6 +449,7 @@ def addstudent(request):
     #         image = request.FILES.get('parent_photo')
     #         parent.parent_photo = image
 
+    vuser= str(request.user )
 
     birthcert= student.data['birth_cert_no']
     category = student.data['student_fee_category']
@@ -537,6 +538,8 @@ def addstudent(request):
         year=year.replace('0','',2)
         keyuniq='S00'+str(stud.pk)+'/'+year
         stud.adm_no=keyuniq
+        stud.created_by=vuser
+        stud.created_on = datetime.today()
         stud.save()
         return JsonResponse({'success': 'Student Saved Successfully'})
     else:

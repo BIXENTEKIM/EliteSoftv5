@@ -35,6 +35,12 @@ class Students(models.Model):
       grade = models.CharField(max_length=200,null=True,blank=True)
       primary_school = models.CharField(max_length=200,null=True,blank=True)
       student_photo = models.ImageField(upload_to="studentphoto",null=True,blank=True)
+      student_school_status = models.CharField(max_length=200, blank=True, default='Active')
+      student_statuschange_date = models.DateTimeField(null=True, blank=True)
+      student_resume_date = models.DateTimeField(null=True, blank=True)
+      student_statuschange_term = models.CharField(max_length=200, null=True, blank=True)
+      student_statuschange_reason = models.CharField(max_length=500, blank=True, null=True)
+      year_of_completion = models.CharField(max_length=200, blank=True, null=True)
       student_fee_category = models.ForeignKey(FeeCategories, on_delete=models.CASCADE, null=True,blank=True)
       student_dorm = models.ForeignKey(Dorms, on_delete=models.CASCADE, null=True,blank=True)
       student_campus = models.ForeignKey(Campuses, on_delete=models.CASCADE, null=True,blank=True)
@@ -51,5 +57,7 @@ class Students(models.Model):
       health_status = models.ForeignKey(HealthStatus, on_delete=models.CASCADE, null=True,blank=True)
       student_status = models.ForeignKey(StudentStatus, on_delete=models.CASCADE, null=True,blank=True)
       student_exam_year = models.ForeignKey(Years, on_delete=models.CASCADE, null=True,blank=True)
+      created_by= models.CharField(max_length=200, null=True, blank=True)
+      created_on= models.DateTimeField(null=True, blank=True)
 
 

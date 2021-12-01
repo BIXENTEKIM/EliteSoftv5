@@ -125,21 +125,36 @@ WSGI_APPLICATION = 'schoolsys.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'sql_server.pyodbc',
+#         'NAME': 'TestSchool',
+#         'USER': 'admin',
+#         'PASSWORD': 'P4$$W0RD',
+#         'HOST': 'DESKTOP-1FPK0DH\MSSQLSERVER01',
+#         'PORT': '1433',
+#         'OPTIONS': {
+#             'driver': 'ODBC Driver 17 for SQL Server',
+#         },
+#     },
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'sql_server.pyodbc',
-        'NAME': 'TestSchool',
-        'USER': 'admin',
-        'PASSWORD': 'P4$$W0RD',
-        'HOST': 'DESKTOP-1FPK0DH\MSSQLSERVER01',
-        'PORT': '1433',
+        'NAME': 'admindb',
+        'USER': 'sa',
+        'PASSWORD':'faulu@2021#',
+        'HOST':'35.239.215.4',
+        'PORT': '1403',
         'OPTIONS': {
-            'driver': 'ODBC Driver 17 for SQL Server',
-        },
-    },
+            'driver': 'FreeTDS',
+            'unicode_results': True,
+            'host_is_server': True,
+            'extra_params': 'tds_version=8.0',
+        }
+    }
 }
-
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators

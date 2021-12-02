@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-ls3*5$kwz$)_a!n@8h3zqt#aqq3#$s_ig)-+43sw_gio9=vab9
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -141,18 +141,12 @@ WSGI_APPLICATION = 'schoolsys.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'sql_server.pyodbc',
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': 'admindb',
-        'USER': 'sa',
-        'PASSWORD':'faulu@2021#',
-        'HOST':'35.239.215.4',
-        'PORT': '1403',
-        'OPTIONS': {
-            'driver': 'FreeTDS',
-            'unicode_results': True,
-            'host_is_server': True,
-            'extra_params': 'tds_version=8.0',
-        }
+        'USER': 'root',
+        'PASSWORD': 'admin1234',
+        'HOST': '35.239.215.4',
+        'PORT': '3306',
     }
 }
 

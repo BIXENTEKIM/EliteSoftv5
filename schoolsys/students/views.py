@@ -109,7 +109,7 @@ def searchStudents(request):
         query = '%' + '' + '%'
 
     listsel = []
-    students = StudentDef.objects.raw("SELECT top 5 stdCode,firstName,lastName FROM students_studentdef WHERE firstName like %s or lastName like %s",tuple([query,query]))
+    students = StudentDef.objects.raw("SELECT  stdCode,firstName,lastName FROM students_studentdef WHERE firstName like %s or lastName like %s",tuple([query,query]))
 
     for obj in students:
         text = obj.firstName + ' ' + obj.lastName
@@ -153,7 +153,7 @@ def getcounty(request):
     # return JsonResponse(counties, safe=False)
     listsel = []
     counties = Counties.objects.raw(
-        "SELECT top 5 county_id,county_name,county_code,country_name FROM students_counties,students_countries"+
+        "SELECT  county_id,county_name,county_code,country_name FROM students_counties,students_countries"+
         " where county_country_id=country_id")
 
     for obj in counties:
@@ -176,7 +176,7 @@ def searchcountries(request):
 
     listsel = []
     students = Countries.objects.raw(
-        "SELECT top 5 country_id,country_name FROM students_countries WHERE country_name like %s or country_code like %s",
+        "SELECT  country_id,country_name FROM students_countries WHERE country_name like %s or country_code like %s",
         tuple([query, query]))
 
     for obj in students:
@@ -205,7 +205,7 @@ def searchcounties(request,id):
 
     listsel = []
     counties = Counties.objects.raw(
-        "SELECT top 5 county_id,county_name FROM students_counties WHERE county_country_id = %s and" +
+        "SELECT  county_id,county_name FROM students_counties WHERE county_country_id = %s and" +
         " (county_name like %s or county_code like %s)",
         [id, query,query])
 

@@ -47,9 +47,9 @@ def getStudents(request):
     # return JsonResponse(students, safe=False)
     listsel = []
     students = StudentDef.objects.raw(
-        "SELECT stdCode,concat(firstName,' ',lastName)name,phone,website,age,town,country_name,county_name FROM students_studentdef" +
-        " INNER JOIN students_countries on stud_country_id=country_id"+
-        " INNER JOIN students_counties on stud_county_id=county_id")
+        "SELECT stdCode,concat(firstName,' ',lastName)name,phone,website,age,town,country_name,county_name FROM students_studentdef,students_countries,students_counties" +
+        " where stud_country_id=country_id"+
+        "  and  stud_county_id=county_id")
 
     for obj in students:
         response_data = {}
@@ -153,8 +153,8 @@ def getcounty(request):
     # return JsonResponse(counties, safe=False)
     listsel = []
     counties = Counties.objects.raw(
-        "SELECT top 5 county_id,county_name,county_code,country_name FROM students_counties"+
-        " INNER JOIN students_countries on county_country_id=country_id")
+        "SELECT top 5 county_id,county_name,county_code,country_name FROM students_counties,students_countries"+
+        " where county_country_id=country_id")
 
     for obj in counties:
         response_data = {}

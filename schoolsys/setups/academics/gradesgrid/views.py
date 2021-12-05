@@ -4,7 +4,7 @@ from django.shortcuts import render
 # Create your views here.
 from setups.academics.gradesgrid.forms import GradesGridForm
 from setups.academics.gradesgrid.models import GradesGrid
-from setups.academics.departments.models import SchoolDepartments
+from setups.academics.departments.models import Departments
 from students.models import Select2Data
 from students.serializers import Select2Serializer
 
@@ -19,7 +19,7 @@ def createGradesgrid(request):
     sd = gradesgrid.data['grades_department']
 
     if sd is not None and sd != '':
-        department = SchoolDepartments.objects.get(pk=sd)
+        department = Departments.objects.get(pk=sd)
         gradesgrid.grades_department = department
         print(department)
     gradesgrid.save()
@@ -60,7 +60,7 @@ def editGradesgrid(request,id):
     response_data = {}
 
     if gradesgrid.grades_department is not None:
-        gradesgridDepartment = SchoolDepartments.objects.get(pk=gradesgrid.grades_department.pk)
+        gradesgridDepartment = Departments.objects.get(pk=gradesgrid.grades_department.pk)
         response_data['gradesgridDepartmentCode'] = gradesgridDepartment.dp_code
         response_data['gradesgridDepartmentName'] = gradesgridDepartment.dp_name
     response_data['grades_code'] = gradesgrid.grades_code
@@ -93,7 +93,7 @@ def searchDepartment(request):
         query = '%' + '' + '%'
 
     listsel = []
-    departments = SchoolDepartments.objects.raw(
+    departments = Departments.objects.raw(
         "SELECT top 5 dp_code,dp_name FROM departments_schooldepartments WHERE dp_name like %s or dp_name like %s",
         # "SELECT top 5 dp_code,dp_name FROM departments_schooldepartments ",
         tuple([query, query]))

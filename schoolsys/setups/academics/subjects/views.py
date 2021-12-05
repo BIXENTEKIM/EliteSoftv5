@@ -3,8 +3,8 @@ from django.shortcuts import render
 
 # Create your views here.
 from setups.academics.subjects.forms import SubjectForm
-from setups.academics.subjects.models import SchoolSubjects
-from setups.academics.departments.models import SchoolDepartments
+from setups.academics.subjects.models import Subjects
+from setups.academics.departments.models import Departments
 from students.models import Select2Data
 from students.serializers import Select2Serializer
 
@@ -40,7 +40,7 @@ def createSubject(request):
 
 def getSubjects(request):
     listsel = []
-    subjects = SchoolSubjects.objects.raw(
+    subjects = Subjects.objects.raw(
         "select top 100 subject_code,subject_sht_code,subject_name,subject_order,subject_multiply_by,subject_include_for_pos,dp_name from  [dbo].[subjects_schoolsubjects] s, [dbo].[departments_schooldepartments]  d "+
         " where [dp_code] = [subject_department_id]")
 
@@ -68,7 +68,7 @@ def getSubjects(request):
 
 
 def editSubject(request,id):
-    subjects = SchoolSubjects.objects.get(pk=id)
+    subjects = Subjects.objects.get(pk=id)
     response_data = {}
 
     if subjects.subject_department is not None:
@@ -85,14 +85,14 @@ def editSubject(request,id):
 
 
 def updateSubject(request,id):
-    subjects = SchoolSubjects.objects.get(pk=id)
+    subjects = Subjects.objects.get(pk=id)
     form = SubjectForm(request.POST, instance=subjects)
     form.save()
     return JsonResponse({'success': 'Subject Updated Successfully'})
 
 
 def deleteSubject(request,id):
-    subjects = SchoolSubjects.objects.get(pk=id)
+    subjects = Subjects.objects.get(pk=id)
     subjects.delete()
     return JsonResponse({'success': 'Subject Deleted Successfully'})
 

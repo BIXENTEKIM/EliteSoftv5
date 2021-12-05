@@ -20,7 +20,7 @@ class Migration(migrations.Migration):
                 ('sg_group', models.IntegerField()),
                 ('sg_compulsory_f12', models.BooleanField(default=True)),
                 ('sg_compulsory_school', models.BooleanField(default=False)),
-                ('subjectgroups_subject', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='subjects.SchoolSubjects')),
+                ('subjectgroups_subject', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='subjects.Subjects')),
             ],
             options={
                 'db_table': 'Setups_SubjectGroups',

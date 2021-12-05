@@ -22,7 +22,7 @@ class Migration(migrations.Migration):
                 ('grades_grade', models.CharField(max_length=20)),
                 ('grades_remarks', models.CharField(max_length=50)),
                 ('grades_option', models.CharField(max_length=50)),
-                ('grades_department', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='departments.SchoolDepartments')),
+                ('grades_department', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='departments.Departments')),
             ],
         ),
     ]

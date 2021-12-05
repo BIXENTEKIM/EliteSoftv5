@@ -68,7 +68,12 @@ function saveDocs(){
                 processData: false,
                 contentType: false
             }).done(function (s) {
-                bootbox.alert(s.success)
+               swal({
+         type: 'success',
+         title: 'Success',
+         text: s.success,
+         showConfirmButton: true
+     })
 
             }).fail(function (xhr, error) {
                 bootbox.alert(xhr.responseText)
@@ -160,44 +165,146 @@ function deleteStudent() {
 }
 function saveStudent(){
     $('#saveStudent').click(function () {
-       var main = $('#main-form').serializeArray();
-       var contact = $('#contact-form').serializeArray();
-       var details = $('#other-form').serializeArray();
-       var formData = new FormData();
-       for (var i=0; i<main.length; i++) {
-           formData.append(main[i].name, main[i].value);
-       }
-       for (var j=0; j<contact.length; j++) {
-           formData.append(contact[j].name, contact[j].value);
-       }
-       for (var k=0; k<details.length; k++) {
-           formData.append(details[k].name, details[k].value);
-       }
-       formData.append( 'student_photo', $( '#student-avatar' )[0].files[0] );
 
-		var url = '';
-        if($('#studentCode').val()===''){
-          url = 'addstudent'
-        }else{
-            url = 'updatestudent/'+$('#studentCode').val()
-           formData.append( 'adm_no', $( '#admNoEdit' ).val() );
+        if($('#upi').val()==''){
+         swal({
+          title: 'Alert!',
+          type: 'info',
+          text: 'UPI Field is Mandatory',
+         confirmButtonText: 'OK'
+      })
         }
-		$.ajax({
-			type: 'POST',
-			url: url,
-            data: formData,
-            processData: false,
-            contentType: false
-		}).done(function (s) {
-		    clearPage()
-		    getStudents()
-			bootbox.alert(s.success)
+        else if($('#admNo').val()==='') {
+            swal({
+                title: 'Alert!',
+                type: 'info',
+                text: 'AdmNo Field is Mandatory',
+                confirmButtonText: 'OK'
+            })
+        }
+            else if($('#studentName').val()===''){
+           swal({
+          title: 'Alert!',
+          type: 'info',
+          text: 'Name Field is Mandatory',
+         confirmButtonText: 'OK'
+      })
+        }
+         else if($('#gender').val()===''){
+           swal({
+          title: 'Alert!',
+          type: 'info',
+          text: 'Gender Field is Mandatory',
+         confirmButtonText: 'OK'
+      })
+        }
+         else if($('#studentClass').val()===''){
+           swal({
+          title: 'Alert!',
+          type: 'info',
+          text: 'Class Field is Mandatory',
+         confirmButtonText: 'OK'
+      })
+        }
+         else if($('#feeCategory').val()===''){
+           swal({
+          title: 'Alert!',
+          type: 'info',
+          text: 'Fee Category Field is Mandatory',
+         confirmButtonText: 'OK'
+      })
+        }
+         else if($('#dorm').val()===''){
+           swal({
+          title: 'Alert!',
+          type: 'info',
+          text: 'Dorm Field is Mandatory',
+         confirmButtonText: 'OK'
+      })
+        }
+         else if($('#parent').val()===''){
+           swal({
+          title: 'Alert!',
+          type: 'info',
+          text: 'Parent Field is Mandatory',
+         confirmButtonText: 'OK'
+      })
+        }
+         else if($('#studentCounty').val()===''){
+           swal({
+          title: 'Alert!',
+          type: 'info',
+          text: 'County Field is Mandatory',
+         confirmButtonText: 'OK'
+      })
+        }
+         else if($('#subCounty').val()===''){
+           swal({
+          title: 'Alert!',
+          type: 'info',
+          text: 'Sub County Field is Mandatory',
+         confirmButtonText: 'OK'
+      })
+        }
+         else if($('#dob').val()===''){
+           swal({
+          title: 'Alert!',
+          type: 'info',
+          text: 'Date of Birth Field is Mandatory',
+         confirmButtonText: 'OK'
+      })
+        }
+         else if($('#birthCertNo').val()===''){
+           swal({
+          title: 'Alert!',
+          type: 'info',
+          text: 'Birth Cert Number Field is Mandatory',
+         confirmButtonText: 'OK'
+      })
+        }
+        else {
+            var main = $('#main-form').serializeArray();
+            var contact = $('#contact-form').serializeArray();
+            var details = $('#other-form').serializeArray();
+            var formData = new FormData();
+            for (var i = 0; i < main.length; i++) {
+                formData.append(main[i].name, main[i].value);
+            }
+            for (var j = 0; j < contact.length; j++) {
+                formData.append(contact[j].name, contact[j].value);
+            }
+            for (var k = 0; k < details.length; k++) {
+                formData.append(details[k].name, details[k].value);
+            }
+            formData.append('student_photo', $('#student-avatar')[0].files[0]);
 
-		}).fail(function (xhr, error) {
-						bootbox.alert(xhr.responseText)
-		})
+            var url = '';
+            if ($('#studentCode').val() === '') {
+                url = 'addstudent'
+            } else {
+                url = 'updatestudent/' + $('#studentCode').val()
+                formData.append('adm_no', $('#admNoEdit').val());
+            }
+            $.ajax({
+                type: 'POST',
+                url: url,
+                data: formData,
+                processData: false,
+                contentType: false
+            }).done(function (s) {
+                clearPage()
+                getStudents()
+                swal({
+                    type: 'success',
+                    title: 'Success',
+                    text: s.success,
+                    showConfirmButton: true
+                })
+            }).fail(function (xhr, error) {
+                bootbox.alert(xhr.responseText)
+            })
 
-
+        }
 	})
 }
 function getStudents() {
@@ -215,15 +322,15 @@ function getStudents() {
                 +"<td>"+item.admNo+"</td>"
                 +"<td>"+item.name+"</td>"
                 +"<td>"+item.birthDate+"</td>"
-                +"<td>"+item.status+"</td>"
-//                +"<td>"+item.completionDate+"</td>"
+                +"<td>"+item.admDate+"</td>"
+                +"<td>"+item.completionDate+"</td>"
                 +"<td>"+item.dorm+"</td>"
                 +"<td>"+item.studentClass+"</td>"
                 +"<td>"+item.email+"</td>"
                 +"<td>"+item.phone+"</td>"
                 +"<td>"+item.parent+"</td>"
                 +"<td>"+item.gender+"</td>"
-//                +"<td>"+item.nationality+"</td>"
+                +"<td>"+item.nationality+"</td>"
                 +"<td>"+'<form id="editForm" method="post" enctype="multipart/form-data"><input type="hidden" id="edit-student" name="id" value='+item.studentCode+'></form><button class="btn btn-outline-primary btn-sm btn-editstudent" ><i class="fa fa-edit"></button>'
                 +"</td>"
                 +"<td>"+'<form id="deleteForm" method="post" enctype="multipart/form-data"><input type="hidden" id="delete-student" name="id" value='+item.studentCode+'></form><button class="btn btn-outline-danger btn-sm btn-deletestudent" ><i class="fa fa-trash-o"></button>'
@@ -248,7 +355,7 @@ function studentImage(url){
             removeTitle: 'Cancel or reset changes',
             elErrorContainer: '#kv-avatar-errors',
             msgErrorClass: 'alert alert-block alert-danger',
-            defaultPreviewContent: '<img src="' + url + '"  style="height:13em;width:230px">',
+            defaultPreviewContent: '<img src="' + url + '"  style="height:13em;width:190px">',
             layoutTemplates: {main2: '{preview} ' + ' {remove} {browse}'},
             allowedFileExtensions: ["jpg", "png", "gif"]
         });

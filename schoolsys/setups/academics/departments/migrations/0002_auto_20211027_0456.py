@@ -11,7 +11,7 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.AlterField(
-            model_name='schooldepartments',
+            model_name='departments',
             name='dp_sht_name',
             field=models.CharField(max_length=4),
         ),

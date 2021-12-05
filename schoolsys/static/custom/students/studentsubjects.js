@@ -229,6 +229,7 @@ $('#unAssignedTbl').on('change','.stud-check',function (s) {
     });
 
 }
+
 function unassignSubjects() {
 $('#assignedTbl').on('change','.stud-check',function (s) {
 
@@ -284,11 +285,6 @@ function classChange() {
 
         // console.log('country is: '+$('#country-id').val())
         searchSubjects()
-//        if ($('#subjectCode').val(data.id) <> ''){
-//            getUnloaded()
-//            getLoaded()
-//        }
-
 
     });
     $("#class_frm").on("select2:unselecting", function(e) {

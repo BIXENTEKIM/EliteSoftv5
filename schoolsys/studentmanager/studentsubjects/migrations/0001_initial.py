@@ -21,7 +21,7 @@ class Migration(migrations.Migration):
                 ('stud_subject_code', models.AutoField(primary_key=True, serialize=False)),
                 ('stud_subject_class', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='classes.SchoolClasses')),
                 ('stud_subject_student', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='student.Students')),
-                ('stud_subject_subject', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='subjects.SchoolSubjects')),
+                ('stud_subject_subject', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='subjects.Subjects')),
             ],
         ),
     ]

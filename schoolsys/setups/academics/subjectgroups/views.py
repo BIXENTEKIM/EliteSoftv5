@@ -4,7 +4,7 @@ from django.shortcuts import render
 # Create your views here.
 from setups.academics.subjectgroups.forms import SubjectGroupsForm
 from setups.academics.subjectgroups.models import SubjectGroups
-from setups.academics.subjects.models import SchoolSubjects
+from setups.academics.subjects.models import Subjects
 from students.models import Select2Data
 from students.serializers import Select2Serializer
 
@@ -33,7 +33,7 @@ def createSubjectGroup(request):
     sd = subjectgroup.data['subjectgroups_subject']
 
     if sd is not None and sd != '':
-        subject = SchoolSubjects.objects.get(pk=sd)
+        subject =  Subjects.objects.get(pk=sd)
         subjectgroup.subjectgroups_subject=subject
 
 
@@ -83,7 +83,7 @@ def editSubjectGroup(request,id):
     response_data = {}
 
     if subjectgroups.subjectgroups_subject  is not None:
-        subjectGroupSubject = SchoolSubjects.objects.get(pk=subjectgroups.subjectgroups_subject.pk)
+        subjectGroupSubject = Subjects.objects.get(pk=subjectgroups.subjectgroups_subject.pk)
         response_data['subjectGroupSubjectCode'] = subjectGroupSubject.subject_code
         response_data['subjectGroupSubjectName'] = subjectGroupSubject.subject_name
     response_data['sg_code'] = subjectgroups.sg_code
@@ -114,7 +114,7 @@ def searchSubject(request):
         query = '%' + '' + '%'
 
     listsel = []
-    subjects = SchoolSubjects.objects.raw(
+    subjects = Subjects.objects.raw(
         "SELECT top 5 subject_code,subject_name FROM subjects_schoolsubjects WHERE subject_name like %s or subject_name like %s",
         # "SELECT top 5 dp_code,dp_name FROM departments_schooldepartments ",
         tuple([query, query]))

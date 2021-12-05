@@ -3,7 +3,7 @@ from django.shortcuts import render
 
 # Create your views here.
 from setups.academics.departments.forms import DepartmentForm
-from setups.academics.departments.models import SchoolDepartments
+from setups.academics.departments.models import  Departments
 from students.models import Select2Data
 from students.serializers import Select2Serializer
 
@@ -20,7 +20,7 @@ def createDepartment(request):
 
 def getDepartments(request):
     listsel = []
-    departments = SchoolDepartments.objects.raw(
+    departments =  Departments.objects.raw(
         "SELECT DISTINCT v.dp_code,v.dp_sht_name, v.dp_name,v.dp_sequence  FROM   departments_schooldepartments  v")
 
 
@@ -39,7 +39,7 @@ def getDepartments(request):
 
 
 def editDepartment(request,id):
-    departments = SchoolDepartments.objects.get(pk=id)
+    departments =  Departments.objects.get(pk=id)
     response_data = {}
     response_data['dpCode'] = departments.dp_code
     response_data['dpShtName'] = departments.dp_sht_name
@@ -49,14 +49,14 @@ def editDepartment(request,id):
 
 
 def updateDepartment(request,id):
-    departments = SchoolDepartments.objects.get(pk=id)
+    departments =  Departments.objects.get(pk=id)
     form = DepartmentForm(request.POST, instance=departments)
     form.save()
     return JsonResponse({'success': 'Department Updated Successfully'})
 
 
 def deleteDepartment(request,id):
-    departments = SchoolDepartments.objects.get(pk=id)
+    departments =  Departments.objects.get(pk=id)
     departments.delete()
     return JsonResponse({'success': 'Department Deleted Successfully'})
 
@@ -69,7 +69,7 @@ def searchDepartment(request):
         query = '%' + '' + '%'
 
     listsel = []
-    departments = SchoolDepartments.objects.raw(
+    departments =  Departments.objects.raw(
         "SELECT top 5 dp_code,dp_name FROM departments_schooldepartments v WHERE v.dp_name like %s or v.dp_name like %s",
         tuple([query, query]))
 

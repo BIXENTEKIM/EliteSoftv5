@@ -11,37 +11,37 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.AlterField(
-            model_name='schoolsubjects',
+            model_name='subjects',
             name='subject_combined',
             field=models.BooleanField(blank=True, default=False, null=True),
         ),
         migrations.AlterField(
-            model_name='schoolsubjects',
+            model_name='subjects',
             name='subject_full',
             field=models.BooleanField(blank=True, default=True, null=True),
         ),
         migrations.AlterField(
-            model_name='schoolsubjects',
+            model_name='subjects',
             name='subject_gradable',
             field=models.BooleanField(blank=True, default=True, null=True),
         ),
         migrations.AlterField(
-            model_name='schoolsubjects',
+            model_name='subjects',
             name='subject_level',
             field=models.IntegerField(blank=True, default=0, null=True),
         ),
         migrations.AlterField(
-            model_name='schoolsubjects',
+            model_name='subjects',
             name='subject_main',
             field=models.BooleanField(blank=True, default=True, null=True),
         ),
         migrations.AlterField(
-            model_name='schoolsubjects',
+            model_name='subjects',
             name='subject_multiply_by',
             field=models.IntegerField(blank=True, default=0, null=True),
         ),
         migrations.AlterField(
-            model_name='schoolsubjects',
+            model_name='subjects',
             name='subject_pct',
             field=models.IntegerField(blank=True, default=0, null=True),
         ),

@@ -13,7 +13,7 @@ from rest_framework import status
 from localities.models import Select2Data
 from localities.serializers import Select2Serializer
 from setups.academics.classes.models import SchoolClasses
-from setups.academics.subjects.models import SchoolSubjects
+from setups.academics.subjects.models import  Subjects
 from studentmanager.student.models import Students
 from studentmanager.studentsubjects.models import StudentSubjects
 
@@ -55,7 +55,7 @@ def searchsubjects(request):
         query = '%' + '' + '%'
 
     listsel = []
-    subjects = SchoolSubjects.objects.raw(
+    subjects = Subjects.objects.raw(
         "SELECT top 5 subject_code,subject_name FROM subjects_schoolsubjects WHERE subject_name like %s",
         tuple([query]))
 
@@ -126,7 +126,7 @@ def assignsubjects(request):
     for std in unstringified:
         print(std)
         student = Students.objects.get(pk=std)
-        subjects = SchoolSubjects.objects.get(pk=subject)
+        subjects = Subjects.objects.get(pk=subject)
         classcodes = SchoolClasses.objects.get(pk=classcode)
         studSubjects = StudentSubjects()
         studSubjects.stud_subject_student=student
@@ -156,7 +156,7 @@ def assignallsubjects(request):
 
         std = obj.student_code
         student = Students.objects.get(pk=std)
-        subjects = SchoolSubjects.objects.get(pk=subject)
+        subjects = Subjects.objects.get(pk=subject)
         classcodes = SchoolClasses.objects.get(pk=classcode)
 
         studSubjects = StudentSubjects()

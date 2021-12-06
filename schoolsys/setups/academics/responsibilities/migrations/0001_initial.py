@@ -9,7 +9,9 @@ class Migration(migrations.Migration):
 
     dependencies = [
     ]
-
+    run_before = [
+        ('teachers', '0001_initial'),
+    ]
     operations = [
         migrations.CreateModel(
             name='Responsibilities',
@@ -20,6 +22,4 @@ class Migration(migrations.Migration):
             ],
         ),
     ]
-    run_before = [
-        ('Teachers', '0001_initial'),
-    ]
+

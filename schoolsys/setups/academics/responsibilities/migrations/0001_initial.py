@@ -21,5 +21,5 @@ class Migration(migrations.Migration):
         ),
     ]
     run_before = [
-        ('teachers', 'teachers.0001_initial'),
+        ('staff', 'teachers.0001_initial'),
     ]

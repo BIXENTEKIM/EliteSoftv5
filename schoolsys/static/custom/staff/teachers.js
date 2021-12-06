@@ -64,6 +64,7 @@ function clearpage(){
     $('#departmentCode').val('');
     $('#teacherTransferFrom').val('');
     $('#teacherTransferTo').val('');
+    $('#assign').prop('checked',false);
     formatDate()
 
 }
@@ -895,6 +896,7 @@ function editTeacher(){
             processData: false,
             contentType: false,
         }).done(function (s) {
+            clearpage();
             $('#teacherCode').val(s.teacher_code);
             $('#teacherName').val(s.teacher_name);
             $('#gender').val(s.gender);
@@ -907,6 +909,7 @@ function editTeacher(){
             $('#email').val(s.email);
             $('#idNo').val(s.id_no);
             $('#intials').val(s.intials);
+
 
             if (s.title_code) {
                 var $newCat = $("<option selected='selected' value='" + s.title_code + "'>'+s.title_name+'</option>").val(s.title_code.toString()).text(s.title_name)

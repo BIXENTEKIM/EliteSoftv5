@@ -16,8 +16,11 @@ from setups.academics.subjects.models import Subjects
 from staff.teachers.forms import TeacherForm
 from staff.teachers.models import TeacherSalution, Teachers
 from staff.teachersubjects.models import TeacherSubjects
+from django.contrib.auth.decorators import login_required
+from django.views.decorators.cache import cache_control
 
-
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+@login_required
 def teacherpage(request):
     return render(request,'staff/teachers.html')
 

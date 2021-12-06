@@ -127,19 +127,19 @@ WSGI_APPLICATION = 'schoolsys.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'sql_server.pyodbc',
-        'NAME': 'TestSchool',
-        'USER': 'admin',
-        'PASSWORD': 'P4$$W0RD',
-        'HOST': 'DESKTOP-1FPK0DH\MSSQLSERVER01',
-        'PORT': '1433',
-        'OPTIONS': {
-            'driver': 'ODBC Driver 17 for SQL Server',
-        },
-    },
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'sql_server.pyodbc',
+#         'NAME': 'TestSchool',
+#         'USER': 'admin',
+#         'PASSWORD': 'P4$$W0RD',
+#         'HOST': 'DESKTOP-1FPK0DH\MSSQLSERVER01',
+#         'PORT': '1433',
+#         'OPTIONS': {
+#             'driver': 'ODBC Driver 17 for SQL Server',
+#         },
+#     },
+# }
 
 # DATABASES = {
 #     'default': {
@@ -152,16 +152,16 @@ DATABASES = {
 #     }
 # }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'jkkimotho$admindb',
-#         'USER': 'jkkimotho',
-#         'PASSWORD': 'Gwathimura123',
-#         'HOST': 'jkkimotho.mysql.pythonanywhere-services.com',
-#         'PORT': '3306',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'jkkimotho$admindb',
+        'USER': 'jkkimotho',
+        'PASSWORD': 'Gwathimura123',
+        'HOST': 'jkkimotho.mysql.pythonanywhere-services.com',
+        'PORT': '3306',
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators

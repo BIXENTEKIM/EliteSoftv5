@@ -79,6 +79,11 @@ INSTALLED_APPS = [
     'setups.academics.responsibilities.apps.ResponsibilitiesConfig',
     'staff.teachersubjects.apps.TeachersubjectsConfig',
 
+    'exams.apps.ExamsConfig',
+    'exams.registration.apps.RegistrationConfig',
+    'exams.examtype.apps.ExamtypeConfig',
+    'setups.academics.gradingsystem.apps.GradingsystemConfig',
+
     'useradmin.apps.UseradminConfig',
     'useradmin.users.apps.UsersConfig',
     'usertype.usertype.apps.UsertypeConfig',
@@ -141,16 +146,7 @@ WSGI_APPLICATION = 'schoolsys.wsgi.application'
 #     },
 # }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'admindb',
-#         'USER': 'root',
-#         'PASSWORD': 'admin1234',
-#         'HOST': '35.239.215.4',
-#         'PORT': '3306',
-#     }
-# }
+
 
 DATABASES = {
     'default': {
@@ -162,6 +158,18 @@ DATABASES = {
         'PORT': '3306',
     }
 }
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'admindb',
+#         'USER': 'root',
+#         'PASSWORD': 'admin1234',
+#         'HOST': '35.239.215.4',
+#         'PORT': '3306',
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators

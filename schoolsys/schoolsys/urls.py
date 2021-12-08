@@ -31,6 +31,7 @@ urlpatterns = [
     path('useradmin/', include('useradmin.urls')),
     path('usertype/', include('usertype.usertype.urls')),
     path('staff/', include('staff.urls')),
+    path('exams/', include('exams.urls')),
 
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

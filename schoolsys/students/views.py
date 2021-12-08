@@ -8,7 +8,11 @@ from django.shortcuts import render
 from students.forms import StudentForm, CountriesForm, CountiesForm
 from students.serializers import StudentSerializer, Select2Serializer
 from .models import StudentDef, Select2Data, Countries, Counties
+from django.views.decorators.cache import cache_control
+from django.contrib.auth.decorators import login_required
 
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+@login_required
 
 # Create your views here.
 def home(request):

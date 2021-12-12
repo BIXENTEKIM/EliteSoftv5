@@ -449,7 +449,6 @@ def addstudent(request):
     #         image = request.FILES.get('parent_photo')
     #         parent.parent_photo = image
 
-    vuser= str(request.user )
 
     birthcert= student.data['birth_cert_no']
     category = student.data['student_fee_category']
@@ -529,33 +528,30 @@ def addstudent(request):
         student.student_status = stat
 
     print(student)
-    if student.is_valid():
-        inst=student.save()
-        stud = Students.objects.get(pk=inst.pk)
-        year = datetime.today().year
-        year=str(year)
-        year=year.replace('2','',1)
-        year=year.replace('0','',2)
-        keyuniq='S00'+str(stud.pk)+'/'+year
-        stud.adm_no=keyuniq
-        stud.created_by=vuser
-        stud.created_on = datetime.today()
-        stud.save()
-        return JsonResponse({'success': 'Student Saved Successfully'})
-    else:
-        print(student.errors)
-        return JsonResponse({'success': "Error saving account master"})
+
+    inst=student.save()
+    stud = Students.objects.get(pk=inst.pk)
+    year = datetime.today().year
+    year=str(year)
+    year=year.replace('2','',1)
+    year=year.replace('0','',2)
+    keyuniq='S00'+str(stud.pk)+'/'+year
+    stud.adm_no=keyuniq
+    stud.birth_cert_no = 'brdq001'
+    stud.save()
+    return JsonResponse({'success': 'Student Saved Successfully'})
 
 
 def getstudents(request):
     listsel = []
     students = Students.objects.raw(
         "SELECT top 20 student_code,adm_no,student_name,date_of_birth,adm_date,completion_date,dorm_name," +
-        "class_name,student_email,student_phone,coalesce(father_name,mother_name)parent,student_gender,country_name,status FROM student_students" +
+        "class_name,student_email,student_phone,coalesce(father_name,mother_name)parent,student_gender,country_name FROM student_students" +
         " LEFT JOIN dorms_dorms ON student_dorm_id=dorm_code" +
         " LEFT JOIN classes_schoolclasses ON student_class_id=class_code" +
         " LEFT JOIN localities_countries ON nationality_id=country_id" +
-        " LEFT JOIN parents_parents ON student_parent_id=parent_code"
+        " LEFT JOIN parents_parents ON student_parent_id=parent_code"+
+        " where student_school_status='Active'"
 
     )
 
@@ -572,7 +568,6 @@ def getstudents(request):
             response_data['dorm'] = obj.dorm_name
             response_data['studentClass'] = obj.class_name
             response_data['email'] = obj.student_email
-            response_data['status'] = obj.status
             response_data['phone'] = obj.student_phone
             response_data['parent'] = obj.parent
             response_data['nationality'] = obj.country_name
@@ -686,19 +681,12 @@ def editstudent(request,id):
 
 def updatestudent(request,id):
     student = Students.objects.get(pk=id)
-    if student.status is not None and student.status == '':
-        student.status="Active"
     form = StudForm(request.POST, request.FILES, instance=student)
     admnno = student.adm_no
     form.adm_no=admnno
-    # print(form)
-    if form.is_valid():
-        form.save()
-        return JsonResponse({'success': 'Student Updated Successfully'})
-    else:
-        print(form.errors)
-        return JsonResponse({'success': "Error saving account master"})
-
+    print(form)
+    form.save()
+    return JsonResponse({'success': 'Student Updated Successfully'})
 
 
 def deletestudent(request,id):

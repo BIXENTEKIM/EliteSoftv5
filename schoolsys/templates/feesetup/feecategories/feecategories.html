@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="row">
+            <div class="col-md-11 col-sm-11 mx-3">
+
+              <h4 class="text-muted mb-3">Fee Categories</h4>
+            </div>
+
+        <div class="col-md-11 col-sm-11 mx-3">
+<button type="button" class="btn btn-outline-primary float-right" id="open-modal">
+    New
+</button>
+
+
+        </div>
+
+        <div class="col-md-11 col-sm-11 mt-2 mx-3">
+
+            <div class="table-responsive">
+        <table class="table table-striped display responsive nowrap" id="feeTable">
+  <thead>
+    <tr>
+      <th scope="col">Category Name</th>
+      <th scope="col">Category Desc</th>
+      <th scope="col">Default</th>
+      <th scope="col">Next Category</th>
+        <th></th>
+        <th></th>
+
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+    </div>
+
+        </div>
+
+<div class="modal fade" id="feeModal" role="dialog" aria-labelledby="classModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title mb-1" id="classModalTitle">Add/Edit Fee Categories</h5>
+        <button type="button" class="close mr-1 mb-2 btn btn-outline-light" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+         <form id="feesetup-form">
+                {% csrf_token %}
+                <input type="hidden" name="category_code" class="form-control" id="category_code" placeholder="">
+                <div class="form-group row mb-3">
+                       <label for="unit-id" class="col-md-2 ml-3 col-sm-11 control-label">Category Name</label>
+
+                        <div class="col-md-8 col-sm-11 ml-0">
+                         <input type="text" name="category_name" class="form-control" id="category_name" placeholder="">
+
+                        </div>
+                </div>
+                  <div class="form-group row mb-3">
+                          <label for="unit-id" class="col-md-2 ml-3 col-sm-11 control-label">Category Desc</label>
+
+                        <div class="col-md-8 col-sm-11">
+                         <input type="text" name="category_desc" class="form-control" id="category_desc" placeholder="">
+
+                        </div>
+                </div>
+
+             <div class="form-group row mb-3">
+                         <label for="unit-id" class="col-md-2 ml-3 col-sm-11 control-label">Default</label>
+
+                        <div class="col-md-8 col-sm-11">
+                          <input type="checkbox" name="default"  id="default">
+
+                        </div>
+                </div>
+
+<!--                   <div class="form-group row mb-3">-->
+<!--                          <label for="unit-id" class="col-md-2 ml-3 col-sm-11 control-label">Current Capacity</label>-->
+
+<!--                        <div class="col-md-8 col-sm-11">-->
+<!--                         <input type="text" name="current_capacity" class="form-control" id="currentCapacity" placeholder="" readonly>-->
+
+<!--                        </div>-->
+<!--                </div>-->
+
+
+            </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="saveFeeCat" class="btn btn-outline-primary">Save</button>
+
+        <button type="button" class="btn btn-outline-default-" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+    </div>
+
+      <script src=" {% static 'custom/feesetup/feesetup.js' %}"></script>
+
+{% endblock %}

@@ -13,7 +13,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='examprocessing',
             name='exam_process_remarks',
-            field=models.CharField(default=0, max_length=400),
+            field=models.CharField(default=1, max_length=400),
             preserve_default=False,
         ),
     ]

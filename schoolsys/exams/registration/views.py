@@ -1,7 +1,10 @@
+from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.shortcuts import render
 
 # Create your views here.
+from django.views.decorators.cache import cache_control
+
 from exams.examtype.models import ExamType
 from exams.registration.forms import ExamRegForm
 from exams.registration.models import ExamRegistration
@@ -12,7 +15,8 @@ from setups.academics.gradingsystem.models import GradingSystem
 from setups.academics.termdates.models import TermDates
 from setups.academics.years.models import Years
 
-
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+@login_required
 def examreg(request):
     return render(request,'exams/examregistration.html')
 
@@ -125,16 +129,11 @@ def createexamreg(request):
         combined = ''
 
     exam = ExamRegForm(request.POST)
-    # if request.method == 'POST':
-    #     if 'parent_photo' in request.FILES:
-    #         image = request.FILES.get('parent_photo')
-    #         parent.parent_photo = image
 
     et = exam.data['exam_type']
     ey = exam.data['exam_year']
     etr = exam.data['exam_term']
     eg = exam.data['exam_grade_scheme']
-    ep = exam.data['']
 
     if et is not None and et != '':
         type = ExamType.objects.get(pk=et)

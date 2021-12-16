@@ -14,7 +14,7 @@ teacherChange();
 subjectChange();
 studentChange();
 calculateMarks();
-getExamMarks();
+ getIntialExamMarks();
 saveMarks();
 editMarks();
 deleteMarks();
@@ -23,6 +23,9 @@ getDynamicUrl();
 importmarks();
 $('#exportBtn').prop('disabled',true)
 })
+function getIntialExamMarks() {
+    $('#processTable').DataTable({})
+}
 function clearData(){
     $('#newMarks').click(function () {
         $('#marks').val('')
@@ -369,7 +372,8 @@ function importmarks(){
                     text: s.success,
                     showConfirmButton: true
                 })
-		    getExamMarks()
+                $('#btn-import-marks').val('');
+		    getExamMarks($('#regCode').val())
             $('#marks').val('')
             $('#examRemarks').val('')
             $('#examPercentageMarks').val('')
@@ -377,7 +381,9 @@ function importmarks(){
 
             }).fail(function (xhr, error) {
                  swal.close();
-                 getExamMarks()
+                 $('#btn-import-marks').val('');
+
+		        getExamMarks($('#regCode').val())
                 p=JSON.parse(xhr.responseText)
 
                 console.log(p.error)
@@ -458,6 +464,11 @@ function termChange() {
          $('#termName').val('T'+data.text+'_')
         $('#examName').val($('#termName').val()+$('#monthName').val()+$('#yearName').val()+$('#typeName').val())
          searchYear()
+        if($('#yearCode').val()!==''){
+            $('#reg_frm').empty()
+            $('#regCode').val('')
+            searchExam(data.id,$('#yearCode').val());
+        }
     });
     $("#term_frm").on("select2:unselecting", function(e) {
     $('#termCode').val('')
@@ -491,8 +502,9 @@ function examChange() {
         var data = e.params.data;
         $('#regCode').val(data.id)
         $('#examExcelCode').val(data.id)
-         searchClass()
-         getGrading(data.id)
+        getExamMarks(data.id)
+        searchClass()
+        getGrading(data.id)
     });
     $("#reg_frm").on("select2:unselecting", function(e) {
     $('#regCode').val('')
@@ -623,10 +635,18 @@ function editMarks(){
     });
 
 }
-function getExamMarks() {
+function getExamMarks(id) {
+    console.log(id)
+    url=''
+    if(id === undefined || id === ''){
+        url='getrecordedmarks'
+    }
+    else{
+        url='getexamrecordedmarks/'+id
+    }
         $.ajax({
         type: 'GET',
-        url: 'getrecordedmarks',
+        url: url,
     }).done(function (s) {
 
    $('#processTable').DataTable().destroy();
@@ -659,6 +679,8 @@ function getExamMarks() {
     }).fail(function (xhr, error) {
        bootbox.alert(xhr.responseText);
     });
+
+
 }
 
 function saveMarks(){
@@ -670,6 +692,14 @@ function saveMarks(){
         }else{
             url = 'updateexammarks/'+$('#processCode').val()
         }
+        if($('#examRemarks').val()==='' || $('#gradeCode').val()===''){
+              swal({
+          title: 'Alert!',
+          type: 'info',
+          text: 'Grade and Remarks are mandatory'
+      })
+        }
+        else{
 		$.ajax({
 			type: 'POST',
 			url: url,
@@ -681,7 +711,7 @@ function saveMarks(){
                     text: s.success,
                     showConfirmButton: true
                 })
-		    getExamMarks()
+		    getExamMarks($('#regCode').val());
             $('#marks').val('')
             $('#examRemarks').val('')
             $('#examPercentageMarks').val('')
@@ -693,8 +723,9 @@ function saveMarks(){
             // bootbox.alert("Error Occured while saving")
 		})
 
-
+}
 	})
+
 }
 function deleteMarks() {
      $('#processTable').on('click','.btn-deleteexam',function (s) {
@@ -706,7 +737,7 @@ function deleteMarks() {
             url: 'deleteexammarks/'+data,
 
         }).done(function (s) {
-          getExamMarks()
+          getExamMarks($('#regCode').val())
           swal({
                     type: 'success',
                     title: 'Success',

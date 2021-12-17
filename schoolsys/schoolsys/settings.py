@@ -56,6 +56,13 @@ INSTALLED_APPS = [
 
     'setups.accounts.accountmaster.apps.AccountMasterConfig',
     'setups.accounts.accountmapping.apps.AccountMappingConfig',
+    # 'setups.accounts.apps.AccountsConfig',
+    'setups.accounts.standardcharges.apps.StandardchargesConfig',
+
+    'feemanager.feesetup.feegroups.apps.FeegroupsConfig',
+    'feemanager.feesetup.feestructure.apps.FeestructureConfig',
+    'feemanager.feesetup.feestructuredetails.apps.FeestructuredetailsConfig',
+
 
     'studentmanager.apps.StudentmanagerConfig',
     'studentmanager.studentsubjects.apps.StudentsubjectsConfig',
@@ -135,32 +142,32 @@ WSGI_APPLICATION = 'schoolsys.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'sql_server.pyodbc',
-#         'NAME': 'TestSchool',
-#         'USER': 'admin',
-#         'PASSWORD': 'P4$$W0RD',
-#         'HOST': 'DESKTOP-1FPK0DH\MSSQLSERVER01',
-#         'PORT': '1433',
-#         'OPTIONS': {
-#             'driver': 'ODBC Driver 17 for SQL Server',
-#         },
-#     },
-# }
-
-
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'jkkimotho$admindb',
-        'USER': 'jkkimotho',
-        'PASSWORD': 'Gwathimura123',
-        'HOST': 'jkkimotho.mysql.pythonanywhere-services.com',
-        'PORT': '3306',
-    }
+        'ENGINE': 'sql_server.pyodbc',
+        'NAME': 'TestSchool',
+        'USER': 'admin',
+        'PASSWORD': 'P4$$W0RD',
+        'HOST': 'DESKTOP-1FPK0DH\MSSQLSERVER01',
+        'PORT': '1433',
+        'OPTIONS': {
+            'driver': 'ODBC Driver 17 for SQL Server',
+        },
+    },
 }
+
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'jkkimotho$admindb',
+#         'USER': 'jkkimotho',
+#         'PASSWORD': 'Gwathimura123',
+#         'HOST': 'jkkimotho.mysql.pythonanywhere-services.com',
+#         'PORT': '3306',
+#     }
+# }
 
 #
 # DATABASES = {

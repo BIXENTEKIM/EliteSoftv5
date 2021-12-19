@@ -32,7 +32,7 @@ def searchexamterm(request):
 
     listsel = []
     terms = TermDates.objects.raw(
-        "SELECT top 5 term_code,term_number FROM termdates_termdates WHERE term_number like %s order by term_number asc",
+        "SELECT  term_code,term_number FROM termdates_termdates WHERE term_number like %s order by term_number asc",
         [query])
 
     for obj in terms:
@@ -54,7 +54,7 @@ def searchfeecategory(request):
 
     listsel = []
     categories = FeeCategories.objects.raw(
-        "SELECT top 5 category_code,category_name FROM feecategories_feecategories WHERE category_name like %s or category_desc like %s",
+        "SELECT  category_code,category_name FROM feecategories_feecategories WHERE category_name like %s or category_desc like %s",
         tuple([query, query]))
 
     for obj in categories:

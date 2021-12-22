@@ -1,5 +1,6 @@
 from django.apps import AppConfig
 
 
-class AcademicsConfig(AppConfig):
+class SystemConfig(AppConfig):
     name = 'setups.system'
+

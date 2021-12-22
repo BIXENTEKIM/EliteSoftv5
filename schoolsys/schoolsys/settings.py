@@ -62,6 +62,13 @@ INSTALLED_APPS = [
     'feemanager.feesetup.feegroups.apps.FeegroupsConfig',
     'feemanager.feesetup.feestructure.apps.FeestructureConfig',
     'feemanager.feesetup.feestructuredetails.apps.FeestructuredetailsConfig',
+    'feemanager.managebalances.apps.ManagebalancesConfig',
+    'feemanager.managebalances.singleinvoicing.apps.SingleinvoicingConfig',
+    'feemanager.managebalances.bulkinvoicing.apps.BulkinvoicingConfig',
+    'feemanager.managebalances.invoicedetails.apps.InvoicedetailsConfig',
+    'setups.system.apps.SystemConfig',
+    'setups.system.invoicesequence.apps.InvoicesequenceConfig',
+     'setups.system.systemsequences.apps.SystemsequencesConfig',
 
 
     'studentmanager.apps.StudentmanagerConfig',
@@ -141,7 +148,7 @@ WSGI_APPLICATION = 'schoolsys.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
+#
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'sql_server.pyodbc',

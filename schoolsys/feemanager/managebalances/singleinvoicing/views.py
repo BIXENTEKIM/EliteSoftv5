@@ -25,7 +25,7 @@ def searchstudents(request):
 
     listsel = []
     students = Students.objects.raw(
-        "SELECT  student_code,concat(adm_no,'--',student_name)name FROM student_students WHERE adm_no like %s or student_name like %s",
+        "SELECT top 5 student_code,concat(adm_no,'--',student_name)name FROM student_students WHERE adm_no like %s or student_name like %s",
         [query, query])
 
     for obj in students:

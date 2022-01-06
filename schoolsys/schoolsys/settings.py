@@ -69,6 +69,12 @@ INSTALLED_APPS = [
     'setups.system.apps.SystemConfig',
     'setups.system.invoicesequence.apps.InvoicesequenceConfig',
      'setups.system.systemsequences.apps.SystemsequencesConfig',
+    'feemanager.recievefees.apps.RecievefeesConfig',
+    'setups.accounts.paymentmodes.apps.PaymentmodesConfig',
+    'setups.accounts.banks.apps.BanksConfig',
+    'setups.accounts.glaccounts.apps.GlaccountsConfig',
+    'setups.accounts.bankbranches.apps.BankbranchesConfig',
+    'feemanager.recievefeedetails.apps.RecievefeedetailsConfig',
 
 
     'studentmanager.apps.StudentmanagerConfig',
